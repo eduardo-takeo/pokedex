@@ -23,6 +23,15 @@ function Main() {
   ];
   const [capturedPokemon, setCapturedPokemon] = useState(mocked);
 
+  async function capturePokemon() {
+    const randomId = Math.floor(Math.random() * 151) + 1;
+
+    await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`)
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+  }
+
   return (
     <main className={styles.content}>
       <header className={styles.header}>
@@ -32,11 +41,15 @@ function Main() {
 
       <section className={styles.cardsContainer}>
         {capturedPokemon!.map((pokemon) => (
-          <PokemonCard name={pokemon.name} image={pokemon.image} />
+          <PokemonCard
+            key={pokemon.name}
+            name={pokemon.name}
+            image={pokemon.image}
+          />
         ))}
       </section>
 
-      <CaptureButton />
+      <CaptureButton onClick={capturePokemon} />
     </main>
   );
 }
