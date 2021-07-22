@@ -8,6 +8,8 @@
 }
 
 .header {
+  height: 15rem;
+
   h1 {
     margin: 2rem 0;
     color: red;
@@ -15,6 +17,9 @@
 }
 
 .cardsContainer {
+  width: 100%;
   padding: 2rem;
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 2rem;
 }

@@ -15,6 +15,13 @@ function Main() {
         <PokemonCard />
         <PokemonCard />
         <PokemonCard />
+        <PokemonCard />
+        <PokemonCard />
+        <PokemonCard />
+        <PokemonCard />
+        <PokemonCard />
+        <PokemonCard />
+        <PokemonCard />
       </section>
 
       <CaptureButton />
