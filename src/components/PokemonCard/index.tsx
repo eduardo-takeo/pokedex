@@ -1,11 +1,16 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-function PokemonCard() {
+interface PokemonCardProps {
+  name: string;
+  image: string;
+}
+
+function PokemonCard({ name, image }: PokemonCardProps) {
   return (
     <div className={styles.card}>
-      <img src="/" alt="Insert image here" />
-      <h1>Pikachu</h1>
+      <img src={image} alt={name} />
+      <h1>{name}</h1>
     </div>
   );
 }
