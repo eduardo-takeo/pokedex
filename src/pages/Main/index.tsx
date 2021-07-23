@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CaptureButton from "../../components/CaptureButton";
 import PokemonCard from "../../components/PokemonCard";
+import PokemonInfo from "../../components/PokemonInfo";
 import styles from "./styles.module.scss";
 
 interface Pokemon {
@@ -45,6 +46,9 @@ function Main() {
               image={pokemon.sprites.front_default}
             />
           ))}
+
+        {/* Create Context to control modal */}
+        <PokemonInfo pokemon={capturedPokemons[0]} />
       </section>
 
       <CaptureButton onClick={capturePokemon} />
