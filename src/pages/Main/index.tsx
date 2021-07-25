@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CaptureButton from "../../components/CaptureButton";
 import PokemonCard from "../../components/PokemonCard";
 import PokemonInfo from "../../components/PokemonInfo";
+import EmptyPrompt from "../../components/EmptyPrompt";
 import styles from "./styles.module.scss";
 
 interface Pokemon {
@@ -37,19 +38,22 @@ function Main() {
         <input type="text" />
       </header>
 
-      <section className={styles.cardsContainer}>
-        {capturedPokemons &&
-          capturedPokemons.map((pokemon) => (
+      {capturedPokemons.length < 1 && <EmptyPrompt />}
+
+      {capturedPokemons.length > 0 && (
+        <section className={styles.cardsContainer}>
+          {capturedPokemons.map((pokemon) => (
             <PokemonCard
               key={pokemon.name}
               name={pokemon.name}
               image={pokemon.sprites.front_default}
             />
           ))}
+        </section>
+      )}
 
-        {/* Create Context to control modal */}
-        <PokemonInfo pokemon={capturedPokemons[0]} />
-      </section>
+      {/* Create Context to control modal */}
+      {/* <PokemonInfo pokemon={capturedPokemons[0]} /> */}
 
       <CaptureButton onClick={capturePokemon} />
     </main>
