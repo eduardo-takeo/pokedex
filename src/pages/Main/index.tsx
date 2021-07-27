@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CaptureButton from "../../components/CaptureButton";
 import PokemonCard from "../../components/PokemonCard";
 import PokemonInfo from "../../components/PokemonInfo";
@@ -18,6 +18,12 @@ interface Pokemon {
 
 function Main() {
   const [capturedPokemons, setCapturedPokemons] = useState<Pokemon[]>([]);
+  const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([]);
+  const [searchPokemon, setSearchPokemon] = useState<string>("");
+
+  useEffect(() => {
+    filterPokemons(searchPokemon);
+  }, [searchPokemon]);
 
   async function capturePokemon() {
     if (capturedPokemons.length >= 10) {
@@ -36,18 +42,37 @@ function Main() {
     setCapturedPokemons([...capturedPokemons, newPokemon]);
   }
 
+  function filterPokemons(searchTerm: string) {
+    const filtered = capturedPokemons.filter((pokemon) => {
+      return pokemon.name
+        .toLowerCase()
+        .includes(searchTerm.toLocaleLowerCase());
+    });
+
+    setFilteredPokemons(filtered);
+  }
+
+  //! Fix bug, search not working properly
+  const pokemonParty =
+    filteredPokemons.length < 1 ? capturedPokemons : filteredPokemons;
+
   return (
     <main className={styles.content}>
       <header className={styles.header}>
         <h1>Pokedéx</h1>
-        <input type="text" />
+        <input
+          type="text"
+          className={styles.searchbar}
+          placeholder="Search Pokémon"
+          onChange={(event) => setSearchPokemon(event.target.value)}
+        />
       </header>
 
-      {capturedPokemons.length < 1 && <EmptyPrompt />}
+      {pokemonParty.length < 1 && <EmptyPrompt />}
 
-      {capturedPokemons.length > 0 && (
+      {pokemonParty.length > 0 && (
         <section className={styles.cardsContainer}>
-          {capturedPokemons.map((pokemon) => (
+          {pokemonParty.map((pokemon) => (
             <PokemonCard
               key={pokemon.name}
               name={pokemon.name}
