@@ -5,10 +5,14 @@
   justify-content: space-around;
   padding: 1.5rem 1rem;
   border-radius: 0.5rem;
-  background-color: red;
+  border: 1px solid #000;
+  cursor: pointer;
 
   h1 {
     font-size: 1rem;
-    color: white;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
   }
 }
