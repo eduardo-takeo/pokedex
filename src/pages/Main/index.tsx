@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CaptureButton from "../../components/CaptureButton";
 import PokemonCard from "../../components/PokemonCard";
 import PokemonInfo from "../../components/PokemonInfo";
@@ -18,12 +18,7 @@ interface Pokemon {
 
 function Main() {
   const [capturedPokemons, setCapturedPokemons] = useState<Pokemon[]>([]);
-  const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([]);
-  const [searchPokemon, setSearchPokemon] = useState<string>("");
-
-  useEffect(() => {
-    filterPokemons(searchPokemon);
-  }, [searchPokemon]);
+  const [party, setParty] = useState<Pokemon[]>([]);
 
   async function capturePokemon() {
     if (capturedPokemons.length >= 10) {
@@ -39,6 +34,7 @@ function Main() {
       .then((response) => response.json())
       .catch((err) => console.error(err));
 
+    setParty([...capturedPokemons, newPokemon]);
     setCapturedPokemons([...capturedPokemons, newPokemon]);
   }
 
@@ -49,12 +45,8 @@ function Main() {
         .includes(searchTerm.toLocaleLowerCase());
     });
 
-    setFilteredPokemons(filtered);
+    setParty(filtered);
   }
-
-  //! Fix bug, search not working properly
-  const pokemonParty =
-    filteredPokemons.length < 1 ? capturedPokemons : filteredPokemons;
 
   return (
     <main className={styles.content}>
@@ -64,15 +56,15 @@ function Main() {
           type="text"
           className={styles.searchbar}
           placeholder="Search Pokémon"
-          onChange={(event) => setSearchPokemon(event.target.value)}
+          onChange={(e) => filterPokemons(e.target.value)}
         />
       </header>
 
-      {pokemonParty.length < 1 && <EmptyPrompt />}
+      {party.length < 1 && <EmptyPrompt />}
 
-      {pokemonParty.length > 0 && (
+      {party.length > 0 && (
         <section className={styles.cardsContainer}>
-          {pokemonParty.map((pokemon) => (
+          {party.map((pokemon) => (
             <PokemonCard
               key={pokemon.name}
               name={pokemon.name}
