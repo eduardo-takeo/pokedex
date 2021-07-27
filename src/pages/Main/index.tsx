@@ -20,6 +20,11 @@ function Main() {
   const [capturedPokemons, setCapturedPokemons] = useState<Pokemon[]>([]);
 
   async function capturePokemon() {
+    if (capturedPokemons.length >= 10) {
+      alert("Party is full");
+      return;
+    }
+
     const randomId = Math.floor(Math.random() * 151) + 1;
 
     const newPokemon = await fetch(
