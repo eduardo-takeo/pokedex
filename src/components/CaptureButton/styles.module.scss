@@ -1,6 +1,4 @@
 button {
-  border-radius: 50%;
-  background-color: red;
   width: 4.5rem;
   height: 4.5rem;
   border: none;
@@ -8,4 +6,14 @@ button {
   bottom: 2rem;
   right: 4rem;
   cursor: pointer;
+  background-color: red;
+  border-radius: 50%;
+
+  img {
+    width: 100%;
+  }
+
+  :hover {
+    filter: brightness(0.8);
+  }
 }
