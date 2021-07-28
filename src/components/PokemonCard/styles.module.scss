@@ -15,4 +15,15 @@
       text-transform: capitalize;
     }
   }
+
+  .removeButton {
+    width: 10px;
+    position: relative;
+    left: 70px;
+    top: -10px;
+  }
+
+  .sprite {
+    max-width: 8rem;
+  }
 }
