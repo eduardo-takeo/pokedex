@@ -38,6 +38,15 @@ function Main() {
     setCapturedPokemons([...capturedPokemons, newPokemon]);
   }
 
+  function removePokemon(name: string) {
+    const newParty = capturedPokemons.filter(
+      (pokemon) => pokemon.name !== name
+    );
+
+    setCapturedPokemons(newParty);
+    setParty(newParty);
+  }
+
   function filterPokemons(searchTerm: string) {
     const filtered = capturedPokemons.filter((pokemon) => {
       return pokemon.name
@@ -69,6 +78,7 @@ function Main() {
               key={pokemon.name}
               name={pokemon.name}
               image={pokemon.sprites.front_default}
+              removePokemon={removePokemon}
             />
           ))}
         </section>
