@@ -60,7 +60,7 @@ function Main() {
   return (
     <main className={styles.content}>
       <header className={styles.header}>
-        <h1>Pokedéx</h1>
+        <h1>Pokédex</h1>
         <input
           type="text"
           className={styles.searchbar}
