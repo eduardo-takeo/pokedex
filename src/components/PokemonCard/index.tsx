@@ -1,21 +1,23 @@
 import React from "react";
 import DeleteIcon from "../../assets/close.png";
+import { useParty } from "../../contexts/PartyContext";
 import styles from "./styles.module.scss";
 
 interface PokemonCardProps {
   name: string;
   image: string;
-  removePokemon: (name: string) => void;
 }
 
-function PokemonCard({ name, image, removePokemon }: PokemonCardProps) {
+function PokemonCard({ name, image }: PokemonCardProps) {
+  const { removeFromParty } = useParty();
+
   return (
     <div className={styles.card}>
       <img
         src={DeleteIcon}
         alt="Remove"
         className={styles.removeButton}
-        onClick={() => removePokemon(name)}
+        onClick={() => removeFromParty(name)}
       />
       <img src={image} alt={name} className={styles.sprite} />
       <h1>{name}</h1>
