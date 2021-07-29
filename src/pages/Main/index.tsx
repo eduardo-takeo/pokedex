@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import CaptureButton from "../../components/CaptureButton";
 import PokemonCard from "../../components/PokemonCard";
-// import PokemonInfo from "../../components/PokemonInfo";
 import EmptyPrompt from "../../components/EmptyPrompt";
 import styles from "./styles.module.scss";
 import { useParty } from "../../contexts/PartyContext";
@@ -53,17 +52,10 @@ function Main() {
       {displayPokemons.length > 0 && (
         <section className={styles.cardsContainer}>
           {displayPokemons.map((pokemon) => (
-            <PokemonCard
-              key={pokemon.name}
-              name={pokemon.name}
-              image={pokemon.sprites.front_default}
-            />
+            <PokemonCard key={pokemon.name} pokemon={pokemon} />
           ))}
         </section>
       )}
-
-      {/* Create Context to control modal */}
-      {/* <PokemonInfo pokemon={capturedPokemons[0]} /> */}
 
       <CaptureButton onClick={capturePokemon} />
     </main>
