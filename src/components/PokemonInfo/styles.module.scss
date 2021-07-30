@@ -17,6 +17,13 @@
     padding: 1rem;
   }
 
+  .closeButton {
+    width: 20px;
+    position: relative;
+    left: 14rem;
+    cursor: pointer;
+  }
+
   .modalColumn {
     float: left;
     width: 50%;

@@ -1,6 +1,7 @@
 import React from "react";
 import { useModal } from "../../contexts/ModalContext";
 import styles from "./styles.module.scss";
+import CloseIcon from "../../assets/close.png";
 
 interface PokemonInfoProps {
   pokemon: Pokemon;
@@ -27,6 +28,12 @@ function PokemonInfo({ pokemon }: PokemonInfoProps) {
       {isVisible && (
         <main className={styles.modal}>
           <div className={styles.modalContainer}>
+            <img
+              src={CloseIcon}
+              alt="Close"
+              onClick={toggleModal}
+              className={styles.closeButton}
+            />
             <div className={styles.modalColumn}>
               <img src={pokemon.sprites.front_default} alt={pokemon.name} />
               <h2>Description</h2>
