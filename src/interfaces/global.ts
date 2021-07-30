@@ -3,9 +3,9 @@ export interface IPokemon {
   name: string;
   sprites: {
     front_default: string;
+    front_shiny: string;
   };
   height: number;
   weight: number;
-  types: [];
-  stats: [];
+  types: [{ type: { name: string } }];
 }

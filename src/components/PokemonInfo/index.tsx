@@ -11,6 +11,8 @@ interface PokemonInfoProps {
 function PokemonInfo({ pokemon }: PokemonInfoProps) {
   const { isVisible, toggleModal } = useModal();
 
+  console.log(`pokemon`, pokemon);
+
   return (
     <>
       {isVisible && (
@@ -24,14 +26,14 @@ function PokemonInfo({ pokemon }: PokemonInfoProps) {
             />
             <div className={styles.modalColumn}>
               <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-              <h2>Description</h2>
+              <img src={pokemon.sprites.front_shiny} alt={pokemon.name} />
             </div>
             <div className={styles.modalColumn}>
-              <h1>Name</h1>
-              <h2>Description</h2>
-              <h2>Abilities</h2>
-              <h2>Speed</h2>
-              <h2>Attack</h2>
+              <h2># {pokemon.id}</h2>
+              <span>Name: {pokemon.name}</span>
+              <span>Height: {pokemon.height}</span>
+              <span>Weight: {pokemon.weight}</span>
+              {/* TODO: <span>Types: </span> */}
             </div>
           </div>
         </main>
