@@ -1,31 +1,21 @@
 import { useContext } from "react";
 import { createContext, ReactNode, useState } from "react";
+import { IPokemon } from "../interfaces/global";
 
 interface PartyContextProps {
   children: ReactNode;
 }
 
 interface PartyContextData {
-  party: Pokemon[];
+  party: IPokemon[];
   capturePokemon: () => void;
   removeFromParty: (name: string) => void;
-}
-
-interface Pokemon {
-  id: number;
-  name: string;
-  sprites: {
-    front_default: string;
-  };
-  height: number;
-  types: [];
-  stats: [];
 }
 
 const PartyContext = createContext({} as PartyContextData);
 
 export const PartyContextProvider = ({ children }: PartyContextProps) => {
-  const [party, setParty] = useState<Pokemon[]>([]);
+  const [party, setParty] = useState<IPokemon[]>([]);
 
   async function capturePokemon() {
     if (party.length >= 10) {

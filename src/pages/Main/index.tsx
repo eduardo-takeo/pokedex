@@ -5,21 +5,11 @@ import EmptyPrompt from "../../components/EmptyPrompt";
 import styles from "./styles.module.scss";
 import { useParty } from "../../contexts/PartyContext";
 import { useEffect } from "react";
-
-interface Pokemon {
-  id: number;
-  name: string;
-  sprites: {
-    front_default: string;
-  };
-  height: number;
-  types: [];
-  stats: [];
-}
+import { IPokemon } from "../../interfaces/global";
 
 function Main() {
   const { party, capturePokemon } = useParty();
-  const [displayPokemons, setDisplayPokemons] = useState<Pokemon[]>(party);
+  const [displayPokemons, setDisplayPokemons] = useState<IPokemon[]>(party);
 
   useEffect(() => {
     setDisplayPokemons(party);

@@ -2,20 +2,10 @@ import React from "react";
 import { useModal } from "../../contexts/ModalContext";
 import styles from "./styles.module.scss";
 import CloseIcon from "../../assets/close.png";
+import { IPokemon } from "../../interfaces/global";
 
 interface PokemonInfoProps {
-  pokemon: Pokemon;
-}
-
-interface Pokemon {
-  id: number;
-  name: string;
-  sprites: {
-    front_default: string;
-  };
-  height: number;
-  types: [];
-  stats: [];
+  pokemon: IPokemon;
 }
 
 function PokemonInfo({ pokemon }: PokemonInfoProps) {

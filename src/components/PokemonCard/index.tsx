@@ -2,20 +2,12 @@ import React from "react";
 import DeleteIcon from "../../assets/close.png";
 import { useModal } from "../../contexts/ModalContext";
 import { useParty } from "../../contexts/PartyContext";
+import { IPokemon } from "../../interfaces/global";
 import PokemonInfo from "../PokemonInfo";
 import styles from "./styles.module.scss";
 
 interface PokemonCardProps {
-  pokemon: {
-    id: number;
-    name: string;
-    sprites: {
-      front_default: string;
-    };
-    height: number;
-    types: [];
-    stats: [];
-  };
+  pokemon: IPokemon;
 }
 
 function PokemonCard({ pokemon }: PokemonCardProps) {
