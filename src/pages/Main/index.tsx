@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { IPokemon } from "../../interfaces/global";
 
 function Main() {
-  const { party, capturePokemon } = useParty();
+  const { party } = useParty();
   const [displayPokemons, setDisplayPokemons] = useState<IPokemon[]>(party);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function Main() {
         </section>
       )}
 
-      <CaptureButton onClick={capturePokemon} />
+      <CaptureButton />
     </main>
   );
 }
