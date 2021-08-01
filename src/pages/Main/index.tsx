@@ -6,6 +6,7 @@ import styles from "./styles.module.scss";
 import { useParty } from "../../contexts/PartyContext";
 import { useEffect } from "react";
 import { IPokemon } from "../../interfaces/global";
+import PokemonParty from "../../components/PokemonParty";
 
 function Main() {
   const { party } = useParty();
@@ -39,13 +40,7 @@ function Main() {
 
       {displayPokemons.length < 1 && <EmptyPrompt />}
 
-      {displayPokemons.length > 0 && (
-        <section className={styles.cardsContainer}>
-          {displayPokemons.map((pokemon) => (
-            <PokemonCard key={pokemon.name} pokemon={pokemon} />
-          ))}
-        </section>
-      )}
+      {displayPokemons.length > 0 && <PokemonParty party={displayPokemons} />}
 
       <CaptureButton />
     </main>

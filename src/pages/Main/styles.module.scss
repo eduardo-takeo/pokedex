@@ -27,11 +27,3 @@
   padding: 0.5rem 0;
   outline: none;
 }
-
-.cardsContainer {
-  width: 100%;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 2rem;
-}
