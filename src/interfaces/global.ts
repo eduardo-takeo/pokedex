@@ -7,5 +7,5 @@ export interface IPokemon {
   };
   height: number;
   weight: number;
-  types: [{ type: { name: string } }];
+  types: { type: { name: string } }[];
 }
