@@ -11,8 +11,6 @@ interface PokemonInfoProps {
 function PokemonInfo({ pokemon }: PokemonInfoProps) {
   const { isVisible, toggleModal } = useModal();
 
-  console.log(`pokemon`, pokemon);
-
   return (
     <>
       {isVisible && (
